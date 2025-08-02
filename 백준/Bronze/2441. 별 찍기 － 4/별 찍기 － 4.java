@@ -6,11 +6,11 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();
 
-		for (int i = 0; i < a; i++) { // i <= a → i < a
-			for (int j = 0; j < i; j++) { // 공백 출력
+		for (int i = 0; i < a; i++) {
+			for (int j = 0; j < i; j++) {
 				System.out.print(" ");
 			}
-			for (int j = i; j < a; j++) { // 별 출력
+			for (int j = a; j > i; j--) {
 				System.out.print("*");
 			}
 			System.out.println();
