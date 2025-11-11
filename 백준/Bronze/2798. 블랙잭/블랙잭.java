@@ -1,31 +1,33 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-// 백준 - 2798:블랙잭
 public class Main {
-
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		int n = sc.nextInt();
-		int m = sc.nextInt();
+		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken());
 		
 		int[] arr = new int[n];
-		for (int i = 0; i < n; i++) {
-			arr[i] = sc.nextInt();
+		
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
 		int max = 0;
-		
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = i+1; j < arr.length; j++) {
-				for (int j2 = j+1; j2 < arr.length; j2++) {
-					if (arr[i]+arr[j]+arr[j2] <= m && arr[i]+arr[j]+arr[j2] > max) {
-						max = arr[i]+arr[j]+arr[j2];
-					}
+		for (int i = 0; i < arr.length-2; i++) {
+			for (int j = i+1; j < arr.length-1; j++) {
+				for (int k = j+1; k < arr.length; k++) {
+					int hab = arr[i] + arr[j] + arr[k];
+					if (hab <= m && hab > max) max = hab;
 				}
 			}
 		}
-		
 		System.out.println(max);
 	}
 }
