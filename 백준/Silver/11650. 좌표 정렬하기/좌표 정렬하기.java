@@ -7,8 +7,6 @@ import java.util.StringTokenizer;
 public class Main {
 	
 	static int[][] arr;
-	static int cntW = 0;
-	static int cntB = 0;
 	static StringBuilder sb = new StringBuilder();
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
