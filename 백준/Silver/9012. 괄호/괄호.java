@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Stack;
 
 public class Main {
 	
@@ -11,26 +10,30 @@ public class Main {
 		
 		int T = Integer.parseInt(br.readLine());
 		
+		int left = 0;
+		int right = 0;
 		for (int i = 0; i < T; i++) {
-			Stack<String> stk = new Stack<>();
 			String s = br.readLine();
 			for (int j = 0; j < s.length(); j++) {
-				if (s.charAt(j) == '(') {
-					stk.add("(");
+					
+				if(s.charAt(j) == '(') {
+					left++;
 				}
-				else if (s.charAt(j) == ')' && stk.contains("(")) {
-					stk.pop();
+				else {
+					right++;
 				}
-				else {	// 빈 상태라면 그냥 넣음
-					stk.add(")");
+				if(left < right) {
+					break;
 				}
 			}
-			if (stk.isEmpty()) {
+			if(left == right) {
 				sb.append("YES\n");
 			}
 			else {
 				sb.append("NO\n");
 			}
+			left = 0;
+			right = 0;
 		}
 		System.out.println(sb);
 	}
